@@ -1,4 +1,5 @@
 /* The theme owns the full-screen introduction, page layout and motion. */
+#sidebar,#nav,#scroll-down {visibility:visible}
 :root {
   --journal-glass: rgba(250,252,255,.85);
   --journal-card: rgba(255,255,255,.95);
@@ -19,8 +20,9 @@
   --journal-tint: #34485b;
   --journal-shadow: 0 4px 22px rgba(0,0,0,.19);
 }
-#web_bg::after { content:"";position:absolute;inset:0;background:rgba(237,244,250,.86) }
-[data-theme=dark] #web_bg::after {background:rgba(12,18,26,.80)}
+#web_bg {background-color:#101735;animation:none}
+#web_bg::after {content:"";position:absolute;inset:0;background:rgba(11,18,48,.32)}
+[data-theme=dark] #web_bg::after {background:rgba(9,14,35,.52)}
 #page-header.full_page::before {background:linear-gradient(180deg,rgba(4,15,29,.24),rgba(4,16,35,.06) 52%,rgba(2,12,27,.32))}
 #page-header.full_page #site-title {letter-spacing:.075em;text-shadow:0 2px 22px rgba(0,12,34,.56)}
 #page-header.full_page #site-subtitle {font-size:clamp(15px,1.6vw,21px);letter-spacing:.10em}
@@ -43,7 +45,7 @@
 #rightside > div > button,#rightside > div > a {border-radius:10px}
 #page-header a:focus-visible,#body-wrap button:focus-visible,.search-dialog button:focus-visible,[role=button]:focus-visible {outline:3px solid currentColor;outline-offset:3px}
 .journal-filters {display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 0 14px;color:var(--journal-ink)}
-.journal-filters h2 {margin:0;color:inherit;font-size:21px;letter-spacing:-.025em}
+.journal-filters h2 {margin:0;color:white;font-size:21px;letter-spacing:-.025em;text-shadow:0 1px 5px #11182f}
 .journal-segments {display:flex;gap:2px;max-width:100%;padding:3px;background:var(--journal-glass);border-radius:99px;border:1px solid var(--journal-line)}
 .journal-segments button {padding:3px 13px;min-height:34px;border-radius:99px;color:var(--journal-muted);font:inherit;font-size:13px;line-height:1.4}
 .journal-segments button[aria-pressed=true] {background:var(--journal-tint);color:var(--journal-accent);font-weight:650}
