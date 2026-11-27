@@ -1,0 +1,23 @@
+{
+  "name": "梦萦 · 研究手记",
+  "short_name": "梦萦",
+  "lang": "zh-CN",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f6f9",
+  "theme_color": "#f6f6f9",
+  "icons": [
+    {
+      "src": "/app/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/app/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
