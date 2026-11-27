@@ -1,0 +1,80 @@
+/* The theme owns the full-screen introduction, page layout and motion. */
+:root {
+  --journal-glass: rgba(250,252,255,.85);
+  --journal-card: rgba(255,255,255,.95);
+  --journal-ink: #243648;
+  --journal-muted: #4f6578;
+  --journal-line: rgba(43,72,99,.15);
+  --journal-accent: #236992;
+  --journal-tint: #e4f1fb;
+  --journal-shadow: 0 4px 22px rgba(26,47,68,.09);
+}
+[data-theme=dark] {
+  --journal-glass: rgba(28,35,46,.88);
+  --journal-card: rgba(31,38,48,.96);
+  --journal-ink: #e5eff7;
+  --journal-muted: #bfccd9;
+  --journal-line: rgba(190,213,235,.18);
+  --journal-accent: #9cd5ff;
+  --journal-tint: #34485b;
+  --journal-shadow: 0 4px 22px rgba(0,0,0,.19);
+}
+#web_bg::after { content:"";position:absolute;inset:0;background:rgba(237,244,250,.86) }
+[data-theme=dark] #web_bg::after {background:rgba(12,18,26,.80)}
+#page-header.full_page::before {background:linear-gradient(180deg,rgba(4,15,29,.24),rgba(4,16,35,.06) 52%,rgba(2,12,27,.32))}
+#page-header.full_page #site-title {letter-spacing:.075em;text-shadow:0 2px 22px rgba(0,12,34,.56)}
+#page-header.full_page #site-subtitle {font-size:clamp(15px,1.6vw,21px);letter-spacing:.10em}
+#page-header.nav-fixed #nav, #sidebar #sidebar-menus, #local-search .search-dialog {
+  background:var(--journal-glass);color:var(--journal-ink);
+  -webkit-backdrop-filter:blur(20px) saturate(135%);backdrop-filter:blur(20px) saturate(135%);
+}
+#page-header.nav-fixed #nav {border-bottom:1px solid var(--journal-line);box-shadow:0 2px 10px rgba(22,42,60,.06)}
+#nav .menus_item_child,#local-search .search-dialog {border-radius:18px}
+#sidebar #sidebar-menus {border-radius:20px 0 0 20px}
+#recent-posts .recent-post-item,#aside-content .card-widget,.layout>#post,.layout>#page,.layout>#archive,.layout>#category,.layout>#tag {
+  background:var(--journal-card);border:1px solid var(--journal-line);border-radius:19px;box-shadow:var(--journal-shadow)
+}
+#aside-content .card-widget .author-info-description {color:var(--journal-muted)}
+#aside-content #card-info-btn {border-radius:12px}
+#recent-posts .recent-post-info .content {line-height:1.8}
+#local-search .search-dialog {border:1px solid var(--journal-line);box-shadow:0 16px 54px #10233830}
+#local-search .local-search-box--input {border-radius:12px;background:var(--journal-card);color:var(--journal-ink)}
+#search-mask {-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+#rightside > div > button,#rightside > div > a {border-radius:10px}
+#page-header a:focus-visible,#body-wrap button:focus-visible,.search-dialog button:focus-visible,[role=button]:focus-visible {outline:3px solid currentColor;outline-offset:3px}
+.journal-filters {display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 0 14px;color:var(--journal-ink)}
+.journal-filters h2 {margin:0;color:inherit;font-size:21px;letter-spacing:-.025em}
+.journal-segments {display:flex;gap:2px;max-width:100%;padding:3px;background:var(--journal-glass);border-radius:99px;border:1px solid var(--journal-line)}
+.journal-segments button {padding:3px 13px;min-height:34px;border-radius:99px;color:var(--journal-muted);font:inherit;font-size:13px;line-height:1.4}
+.journal-segments button[aria-pressed=true] {background:var(--journal-tint);color:var(--journal-accent);font-weight:650}
+#recent-posts .recent-post-item[hidden] {display:none!important}
+.journal-timeline {list-style:none!important;padding-left:14px!important;border-left:2px solid var(--journal-line)}
+.journal-timeline li {position:relative;padding:10px 0 10px 12px}
+.journal-timeline li::before {content:"";position:absolute;top:22px;left:-19px;width:8px;height:8px;border-radius:50%;background:var(--journal-accent)}
+.journal-timeline time {margin-right:14px;font-size:13px;color:var(--journal-muted)}
+.journal-progress {position:fixed;z-index:92;top:0;left:0;width:100%;height:2px;transform-origin:left;transform:scaleX(0);background:#58aee3;pointer-events:none}
+@media(max-width:768px) {
+  #page-header.full_page {height:100svh;background-attachment:scroll}
+  #page-header.full_page #site-info {padding:0 18px}
+  .journal-filters {flex-wrap:wrap;gap:8px}.journal-filters h2{font-size:19px}
+  .journal-segments button{min-height:40px;padding-inline:10px}
+  #local-search .search-dialog {position:fixed;inset:auto 0 0;width:100%;max-width:none;height:min(70dvh,36rem);margin:0;border-radius:23px 23px 0 0;padding:20px 18px max(20px,env(safe-area-inset-bottom))}
+  #local-search .search-dialog::before {content:"";display:block;width:36px;height:4px;border-radius:4px;margin:-9px auto 9px;background:var(--journal-muted);opacity:.57}
+  #local-search .search-nav {touch-action:pan-x}
+  #local-search .search-wrap {overflow-y:auto;max-height:calc(100% - 50px)}
+  .search-close-button {min-width:40px;min-height:40px}
+}
+@media(prefers-reduced-motion:no-preference) {
+  .journal-segments button,#rightside button {transition:transform .16s ease-out,background-color .18s}
+  .journal-segments button:active,#rightside button:active {transform:scale(.95)}
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {scroll-behavior:auto!important;animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+@media(prefers-reduced-transparency:reduce),(prefers-contrast:more) {
+  :root {--journal-glass:#fff;--journal-card:#fff}
+  [data-theme=dark] {--journal-glass:#202731;--journal-card:#202731}
+  #page-header.nav-fixed #nav,#sidebar #sidebar-menus,#local-search .search-dialog,#search-mask {backdrop-filter:none}
+}
+
+#recent-posts .post_cover img[src$="/lunar.webp"],#aside-content img[src$="/lunar.webp"]{object-position:74% center}
